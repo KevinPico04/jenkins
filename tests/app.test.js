@@ -9,12 +9,12 @@ afterAll(() => {
 // Limpieza: eliminar usuario de prueba si existe
 const users = JSON.parse(fs.readFileSync('./users.json', 'utf8'));
 const filtered = users.filter(u => u.id !== testUser.id);
-fs.writeFilesync('./users.json', JSON.stringify(filtered, null, 2), 'utf8');
+fs.writeFileSync('./users.json', JSON.stringify(filtered, null, 2), 'utf8');
 });
 
 it('Debe responder el endpoint raiz', async () => {
 const res = await request(app).get('/');
-expect (res.statusCode). toBe(200);
+expect(res.statusCode). toBe(200);
 expect(res.body.message).toMatch(/Servidor en ejecucion/i);
 });
 
